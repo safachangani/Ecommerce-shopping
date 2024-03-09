@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './additem.css'
+import axios from '../../axios';
 const AddItem = () => {
   const navigate = useNavigate();
 
@@ -12,9 +13,13 @@ const AddItem = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Add your item submission logic here
-
+    console.log("done");
+    console.log(image);
+    axios.post("/add-new-item",{name,description,category,price,image}).then(()=>{
+    }).catch(error => {
+        console.error("Error adding item:", error);
+        // Handle the error (e.g., show a user-friendly message)
+      });
     // Navigate back to the home page after submitting the item
     navigate('/');
   };
@@ -41,7 +46,7 @@ const AddItem = () => {
         </label>
         <label>
           Image:
-          <input type="file" value={image} onChange={(e) => setImage(e.target.value)} />
+          <input type="file" value={image} onChange={(e) => setImage(e.target.files[0])} />
         </label>
         <button type="submit">Add Item</button>
       </form>
