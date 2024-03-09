@@ -1,10 +1,11 @@
 import './App.css';
-
+import {Route,Routes } from 'react-router-dom'
+import AddItem from './pages/admin/AddItem';
 function App() {
   return (
-    <div className="App">
-    
-    </div>
+   <Routes>
+    <Route path='/' element={<AddItem/>} />
+   </Routes>
   );
 }
 
