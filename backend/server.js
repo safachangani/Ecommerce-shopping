@@ -16,6 +16,7 @@ db.once('open',()=>console.log("Connected to database"))
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
+app.use('/uploads',express.static('uploads'))
 const shoppingRouter = require('./routes/shopping')
 app.use('/shopping',shoppingRouter)
 
